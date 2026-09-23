@@ -1,3 +1,37 @@
+import json
+
+def registrarse(diccionario_cuentas):
+    a = True
+    b = True
+    print ("Bienvenido al registro, le pediremos nombre de usuario, correo electrónico y contraseña")
+    nombre_usuario = input("Escribe su nombre de usuario\n")    
+    while a:
+        correo_electronico = input("Escribe su correo electrónico\n")
+        if "@" in correo_electronico:
+            print ("Correo electrónico válido")
+            a = False
+        else:
+            print("El correo ha de tener una arroba(@)")
+    
+    while b:
+        contraseña = input("Escriba su contraseña")
+        if len(contraseña) <= 4:
+            print ("La contraseña ha de tener mas de 4 caracteres")
+        else:
+            print ("La contraseña es valida, ahora para confirmarla repitela")
+            conf_contraseña = input("Escriba otra vez la contraseña")
+            if contraseña == conf_contraseña:
+                print("¡Contraseña válida!")
+                b = False
+            else:
+                print("La contraseña no es igual, vuelva a ponerla")
+
+    diccionario_cuentas.append(nombre_usuario, correo_electronico, contraseña)
+    with open("archivo.json","w") as archivo:
+        json.dump(diccionario_cuentas, archivo, indent=4)
+
+    
+
 def mostrar_mochila(inventario):
     for objetos in inventario:
         print (f"-{objetos}")
