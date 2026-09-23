@@ -1,4 +1,19 @@
+import json
+
 from herramientas import mostrar_mochila, eliminar_objeto, añadir_objeto, guardar_inventario, cargar_datos
+
+x = True
+
+print ("***Bienvenido al juego***")
+while x:
+    try:
+        print ("***Registrate(1) o inicia sesion(2) para acceder a tu inventario")
+        inicio_programa = int(input())
+        
+    except ValueError:
+        print ("Elige entre 1/2")
+
+
 
 print ("***Bienvenido al inventario***\n¿Que deseas hacer?\nMostrar inventario (1)\nAñadir objeto(2)\nEliminar objeto(3)")
 a = True
@@ -22,7 +37,7 @@ while a:
             try:
                 salir = input("Quieres salir de la mochila(y/n)")
                 if salir == "y":
-                    print ("Saliendo de la mochia。。。")
+                    print ("Saliendo de la mochia 。。。")
                     a = False
                     b = False
                     guardar_inventario(mochila_usuario)
